@@ -51,12 +51,27 @@ export default {
         link: '/experience',
         icon: 'fa fa-briefcase'
       }, {
+        name: 'Skills',
+        color: 'purple',
+        link: '/skills',
+        icon: 'fa fa-chart-bar'
+      }, {
         name: 'Projects',
         color: 'red lighten-2',
         link: '/projects',
-        icon: 'fas fa-browser',
+        icon: 'fa fa-sitemap',
+      }, {
+        name: 'Contact',
+        color: 'grey',
+        link: '/contact',
+        icon: 'fa fa-envelope'
       }
     ]
   })
 }
 </script>
+<style lang="sass">
+body 
+  font-size: 16px
+</style>
+

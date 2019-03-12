@@ -6,7 +6,7 @@
           <h1 class="title">src/view/About</h1>
         </v-flex>
         <template v-for="(line, i) in lines">
-          <v-flex xs1 class="text-xs-right pr-1" :key="'num' + i" style="background: slate; color: black">
+          <v-flex xs1 class="text-xs-right pr-1" :key="'num' + i" style="background: dimgrey; color: black">
             {{ i + 1 }}
           </v-flex>
           <v-flex xs11 :key="'text' + i" class="pl-2">
