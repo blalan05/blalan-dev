@@ -67,7 +67,10 @@ export default {
         icon: 'fa fa-envelope'
       }
     ]
-  })
+  }),
+  created () {
+    console.log(this.$vuetify)
+  }
 }
 </script>
 <style lang="sass">
