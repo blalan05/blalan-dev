@@ -9,6 +9,8 @@
     ]
   },
   "rules": {
+    "semicolon": "never",
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "interface-name": false,
