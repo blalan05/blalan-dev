@@ -3,10 +3,9 @@ module.exports = {
   productionSourceMap: false,
 
   pwa: {
-    name: 'Blalan Dev',
-    themeColor: '#D0021B',
-    msTileColor: '#D0021B'
+    name: 'blalan_dev'
   },
+
   devServer: {
     disableHostCheck: true
   },
