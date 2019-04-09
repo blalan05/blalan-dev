@@ -1,13 +1,6 @@
 import Vue from 'vue';
-// import vuetify from './plugins/vuetify'
-import Vuetify from 'vuetify/lib'
-let vuetifyOpts = {
-  icons: {
-    iconfont: 'fa'
-  },
-  rtl: false
-}
-import 'vuetify/src/styles/main.sass'
+import vuetify from './plugins/vuetify'
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -19,6 +12,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  vuetify: new Vuetify(vuetifyOpts),
+  vuetify,
   render: (h) => h(App),
 }).$mount('#app');
