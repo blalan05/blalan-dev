@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer app light width="360">
+    <v-navigation-drawer app light width="320">
       <v-card>
         <v-toolbar flat>
           <router-link :to="'/'" style="text-decoration: none; color: black;">
@@ -13,17 +13,15 @@
           </v-avatar>
           <div class="title">Blaine Landowski</div>
           <div class="subheading">
-            Fullstack Developer
+            Full Stack Developer
           </div>
         </v-card-text>
       </v-card>
       <v-list>
-        <v-list-tile v-for="nav in navigation" :key="nav.name" :to="nav.link">
-          <v-list-tile-content>
-            <v-list-tile-avatar><v-icon :color="nav.color">{{ nav.icon }}</v-icon></v-list-tile-avatar>
-          </v-list-tile-content>
-          <v-list-tile-title class="text-uppercase text-xs-center">{{ nav.name }}</v-list-tile-title>
-        </v-list-tile>
+        <v-list-item v-for="nav in navigation" :key="nav.name" :to="nav.link">
+          <v-list-item-avatar><v-icon :color="nav.color">{{ nav.icon }}</v-icon></v-list-item-avatar>
+          <v-list-item-title class="text-uppercase text-xs-center">{{ nav.name }}</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -34,7 +32,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
@@ -44,37 +41,30 @@ export default {
         name: 'About',
         color: 'green lighten-2',
         link: '/about',
-        icon: 'fa fa-user'
+        icon: 'fas fa-user'
       }, {
         name: 'Experience',
         color: 'blue',
         link: '/experience',
-        icon: 'fa fa-briefcase'
+        icon: 'fas fa-briefcase'
       }, {
         name: 'Skills',
         color: 'purple',
         link: '/skills',
-        icon: 'fa fa-chart-bar'
+        icon: 'fas fa-chart-bar'
       }, {
         name: 'Projects',
         color: 'red lighten-2',
         link: '/projects',
-        icon: 'fa fa-sitemap',
+        icon: 'fas fa-sitemap'
       }, {
         name: 'Contact',
         color: 'grey',
         link: '/contact',
-        icon: 'fa fa-envelope'
+        icon: 'fas fa-envelope'
       }
     ]
-  }),
-  created () {
-    console.log(this.$vuetify)
-  }
+  })
 }
 </script>
-<style lang="sass">
-body 
-  font-size: 16px
-</style>
 

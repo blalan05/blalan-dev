@@ -1,59 +1,61 @@
 <template>
   <div class="experience">
-    <h2>Langauges</h2>
-    <v-layout>
-      <v-flex shrink>
-        <v-list dense>
-          <v-list-tile>
-            <v-list-tile-title>Expert</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Advanced</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Intermediate</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Novice</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Beginner</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-flex>
-      <v-flex grow>
-        <v-container fluid pa-0>
-          <v-sparkline fill auto-draw :value="languagesVal" :labels="languages" :gradient="['red', 'orange', 'yellow']"></v-sparkline>
-        </v-container>
-      </v-flex>
-    </v-layout>
-    <h2>Frameworks</h2>
-    <v-layout>
-      <v-flex shrink>
-        <v-list dense>
-          <v-list-tile>
-            <v-list-tile-title>Expert</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Advanced</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Intermediate</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Novice</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile>
-            <v-list-tile-title>Beginner</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-flex>
-      <v-flex grow>
-        <v-container fluid pa-0>
-          <v-sparkline fill auto-draw :value="frameworksVal" :labels="frameworks" :gradient="['red', 'orange', 'yellow']"></v-sparkline>
-        </v-container>
-      </v-flex>
-    </v-layout>
+    <v-card flat max-width="960">
+      <h2>Langauges</h2>
+      <v-layout>
+        <v-flex shrink>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-title>Expert</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Advanced</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Intermediate</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Novice</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Beginner</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-flex>
+        <v-flex grow>
+          <v-sheet >
+            <v-sparkline width="100" auto-draw :value="languagesVal" :labels="languages" padding="16"></v-sparkline>
+          </v-sheet>
+        </v-flex>
+      </v-layout>
+      <h2>Frameworks</h2>
+      <v-layout>
+        <v-flex shrink>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-title>Expert</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Advanced</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Intermediate</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Novice</v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>Beginner</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-flex>
+        <v-flex grow>
+          <v-sheet>
+            <v-sparkline width="100" auto-draw :value="frameworksVal" :labels="frameworks" padding="16"></v-sparkline>
+          </v-sheet>
+        </v-flex>
+      </v-layout>
+    </v-card>
   </div>
 </template>
 <script>
@@ -62,7 +64,7 @@ export default {
   data: () => ({
     languagesVal: [5, 5, 4, 5, 3],
     languages: ['HTML', 'CSS', 'JS', 'PHP', 'Nodejs'],
-    frameworksVal: [4, 5, 3, 3, 4, 4, 4, 4,],
+    frameworksVal: [4, 5, 3, 3, 4, 4, 4, 4],
     frameworks: ['Wordpress', 'Codeigniter', 'ExpressionEngine', 'CraftPHP', 'jQuery', 'Vuejs', 'Vuetify', 'Bootstrap']
   })
 }
