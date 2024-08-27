@@ -1,19 +1,20 @@
+/**
+ * .eslint.js
+ *
+ * ESLint configuration file.
+ */
+
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  'extends': [
-    'plugin:vue/essential',
-    'eslint:recommended'
+  extends: [
+    'vuetify',
+    '@vue/eslint-config-typescript',
+    './.eslintrc-auto-import.json',
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'semi': ['error', 'never'],
-    'comma-dangle': ['error', 'never'],
+    'vue/multi-word-component-names': 'off',
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  }
 }
