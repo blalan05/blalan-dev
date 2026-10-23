@@ -100,19 +100,19 @@
 		object-fit: cover;
 	}
 
-	.name {
+	.identity .name {
 		font-size: 20px;
 		font-weight: 500;
 		line-height: 1.2;
 	}
 
-	.role {
+	.identity .role {
 		margin-top: 4px;
 		color: var(--muted);
 		font-size: 14px;
 	}
 
-	.company {
+	.identity .company {
 		display: block;
 		margin-top: 2px;
 		color: var(--gold);
@@ -120,7 +120,7 @@
 		text-decoration: none;
 	}
 
-	.company:hover {
+	.identity .company:hover {
 		text-decoration: underline;
 	}
 
@@ -250,7 +250,7 @@
 			margin: 0;
 		}
 
-		.name {
+		.identity .name {
 			font-size: 16px;
 		}
 
@@ -303,12 +303,12 @@
 			margin: 0;
 		}
 
-		.role,
-		.company {
+		.identity .role,
+		.identity .company {
 			display: none;
 		}
 
-		.name {
+		.identity .name {
 			font-size: 14px;
 		}
 
@@ -593,34 +593,34 @@
 		white-space: pre-wrap;
 	}
 
-	.punct {
+	.editor .punct {
 		color: var(--muted);
 	}
 
-	.name {
+	.editor .name {
 		color: var(--green);
 	}
 
-	.role {
+	.editor .role {
 		color: var(--scarlet);
 	}
 
-	.string,
-	.global {
+	.editor .string,
+	.editor .global {
 		color: var(--gold);
 	}
 
-	a.link {
+	.editor a.link {
 		color: var(--scarlet);
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}
 
-	.keyword {
+	.editor .keyword {
 		color: var(--blue);
 	}
 
-	.text {
+	.editor .text {
 		color: var(--text);
 	}
 
