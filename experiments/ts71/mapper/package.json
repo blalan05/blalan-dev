@@ -1,0 +1,11 @@
+{
+	"name": "svelte-script-mapper",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"typescript": {
+		"contentMapper": {
+			"exec": ["node", "server.mjs"]
+		}
+	}
+}

@@ -1,6 +1,5 @@
-<script lang="ts">
-	type Kind = 'punct' | 'name' | 'role' | 'text' | 'string' | 'global' | 'keyword' | 'link';
-	type Token = { kind: Kind; text: string; href?: string };
+export type Kind = 'punct' | 'name' | 'role' | 'text' | 'string' | 'global' | 'keyword' | 'link';
+	export type Token = { kind: Kind; text: string; href?: string };
 
 	const company = 'Foundational Technologies LLC';
 	const links: Record<string, string> = {
@@ -88,7 +87,7 @@
 
 	const yearsOfSoftware = new Date().getFullYear() - 2011;
 
-	const lines: Token[][] = [
+	export const lines: Token[][] = [
 		tag('person'),
 		leaf('name', 'Blaine Landowski'),
 		leaf('role', 'Software Engineer'),
@@ -152,9 +151,9 @@
 		tag('stack', true)
 	];
 
-	type Scope = { name: string; kind: Kind; start: number; end: number };
+	export type Scope = { name: string; kind: Kind; start: number; end: number };
 
-	function tagInfo(tokens: Token[]) {
+	export function tagInfo(tokens: Token[]) {
 		let opens = false;
 		let closes = false;
 		let name = '';
@@ -172,7 +171,7 @@
 		return name ? { name, kind, opens, closes } : null;
 	}
 
-	const scopes: Scope[] = [];
+	export const scopes: Scope[] = [];
 	{
 		const stack: Scope[] = [];
 		for (let index = 0; index < lines.length; index++) {
@@ -188,298 +187,3 @@
 			}
 		}
 	}
-
-	let codeEl = $state<HTMLDivElement | null>(null);
-	let firstLine = $state(0);
-
-	const stickyScopes = $derived(
-		scopes.filter((scope) => scope.start < firstLine && scope.end >= firstLine)
-	);
-
-	const breadcrumb = $derived.by(() => {
-		const trail = scopes.filter((scope) => scope.start <= firstLine && scope.end >= firstLine);
-		const info = tagInfo(lines[firstLine] ?? []);
-		if (info?.opens && info.closes) trail.push({ ...info, start: firstLine, end: firstLine });
-		return trail;
-	});
-
-	function visibleLine() {
-		if (!codeEl) return 0;
-		const sticky = codeEl.parentElement?.querySelector('.sticky');
-		const edge = codeEl.getBoundingClientRect().top + (sticky?.getBoundingClientRect().height ?? 0) + 4;
-		const rows = codeEl.querySelectorAll<HTMLElement>(':scope > .row');
-		for (let index = 0; index < rows.length; index++) {
-			if (rows[index].getBoundingClientRect().bottom > edge) return index;
-		}
-		return Math.max(0, rows.length - 1);
-	}
-
-	function onScroll() {
-		const next = visibleLine();
-		if (next !== firstLine) firstLine = next;
-	}
-
-	function scrollToLine(index: number) {
-		const row = codeEl?.querySelectorAll<HTMLElement>(':scope > .row')[index];
-		if (!row || !codeEl) return;
-		const delta = row.getBoundingClientRect().top - codeEl.getBoundingClientRect().top;
-		codeEl.scrollTop += delta;
-	}
-</script>
-
-<section class="editor" aria-label="About">
-	<div class="tabbar">
-		<div class="tab">
-			<span class="mark" aria-hidden="true"></span>
-			src/view/About
-		</div>
-	</div>
-
-	<nav class="crumbs" aria-label="Breadcrumbs">
-		<button type="button" onclick={() => scrollToLine(0)}>src/view/About</button>
-		{#each breadcrumb as crumb (crumb.start)}
-			<span class="sep" aria-hidden="true">›</span>
-			<button type="button" class={crumb.kind} onclick={() => scrollToLine(crumb.start)}>
-				{crumb.name}
-			</button>
-		{/each}
-	</nav>
-
-	<div class="viewport">
-		{#if stickyScopes.length}
-			<div class="sticky">
-				{#each stickyScopes as scope (scope.start)}
-					<button type="button" class="row" onclick={() => scrollToLine(scope.start)}>
-						{@render lineBody(lines[scope.start], scope.start)}
-					</button>
-				{/each}
-			</div>
-		{/if}
-
-		<div class="code" bind:this={codeEl} onscroll={onScroll}>
-			{#each lines as tokens, index (index)}
-				<div class="row">
-					{@render lineBody(tokens, index)}
-				</div>
-			{/each}
-		</div>
-	</div>
-
-	<footer>
-		<span>src/view/About</span>
-		<span class="status-right">
-			<span>Spaces: 2</span>
-			<span>UTF-8</span>
-			<span>XML</span>
-		</span>
-	</footer>
-</section>
-
-{#snippet lineBody(tokens: Token[], index: number)}
-	<span class="gutter">{index + 1}</span>
-	<code>
-		{#each tokens as token, tokenIndex (`${index}-${tokenIndex}`)}
-			{#if token.href}
-				<a class={token.kind} href={token.href}>{token.text}</a>
-			{:else}
-				<span class={token.kind}>{token.text}</span>
-			{/if}
-		{/each}
-		{#if tokens.length === 0}
-			<span class="text">&nbsp;</span>
-		{/if}
-	</code>
-{/snippet}
-
-<style>
-	.editor {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		min-height: 0;
-		overflow: hidden;
-		background: var(--bg);
-		color: var(--text);
-		font-family: 'Cascadia Code', 'Cascadia Mono', Consolas, 'Segoe UI Mono', ui-monospace, monospace;
-		font-size: 14px;
-	}
-
-	.tabbar {
-		display: flex;
-		flex: none;
-		height: 36px;
-		background: var(--bg-raised);
-	}
-
-	.tab {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		padding: 0 16px;
-		background: var(--bg);
-		border-right: 1px solid var(--bg-raised);
-		color: #fff;
-		font-family: Roboto, sans-serif;
-		font-size: 13px;
-	}
-
-	.mark {
-		width: 10px;
-		height: 10px;
-		border-radius: 2px;
-		background: var(--scarlet);
-	}
-
-	.crumbs {
-		display: flex;
-		align-items: center;
-		gap: 6px;
-		flex: none;
-		height: 26px;
-		padding: 0 12px;
-		overflow: auto;
-		background: var(--bg);
-		border-bottom: 1px solid var(--line);
-		font-family: Roboto, sans-serif;
-		font-size: 12px;
-	}
-
-	.crumbs button {
-		flex: none;
-		padding: 0;
-		border: 0;
-		background: none;
-		color: var(--muted);
-		font: inherit;
-		cursor: pointer;
-	}
-
-	.crumbs button:hover {
-		text-decoration: underline;
-	}
-
-	.crumbs button.name {
-		color: var(--green);
-	}
-
-	.crumbs button.role {
-		color: var(--scarlet);
-	}
-
-	.crumbs .sep {
-		color: var(--muted);
-	}
-
-	.viewport {
-		position: relative;
-		flex: 1;
-		min-height: 0;
-	}
-
-	.code {
-		box-sizing: border-box;
-		height: 100%;
-		overflow: auto;
-		padding: 8px 0 24px;
-	}
-
-	.sticky {
-		position: absolute;
-		z-index: 2;
-		top: 0;
-		right: 0;
-		left: 0;
-		background: var(--bg);
-		border-bottom: 1px solid var(--line);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-	}
-
-	.sticky .row {
-		background: color-mix(in srgb, var(--bg-raised) 88%, transparent);
-	}
-
-	.row {
-		display: grid;
-		grid-template-columns: 48px minmax(0, 1fr);
-		align-items: start;
-		min-height: 22px;
-		line-height: 22px;
-	}
-
-	button.row {
-		width: 100%;
-		padding: 0;
-		border: 0;
-		color: inherit;
-		font: inherit;
-		text-align: left;
-		cursor: pointer;
-	}
-
-	.row:hover {
-		background: rgba(255, 255, 255, 0.04);
-	}
-
-	.gutter {
-		padding-right: 16px;
-		color: var(--muted);
-		text-align: right;
-		user-select: none;
-	}
-
-	code {
-		display: block;
-		max-width: 93ch;
-		white-space: pre-wrap;
-	}
-
-	.punct {
-		color: var(--muted);
-	}
-
-	.name {
-		color: var(--green);
-	}
-
-	.role {
-		color: var(--scarlet);
-	}
-
-	.string,
-	.global {
-		color: var(--gold);
-	}
-
-	a.link {
-		color: var(--scarlet);
-		text-decoration: underline;
-		text-underline-offset: 2px;
-	}
-
-	.keyword {
-		color: var(--blue);
-	}
-
-	.text {
-		color: var(--text);
-	}
-
-	footer {
-		display: flex;
-		justify-content: space-between;
-		gap: 16px;
-		flex: none;
-		height: 24px;
-		padding: 0 12px;
-		background: var(--scarlet-strong);
-		color: #fff;
-		font-family: Roboto, sans-serif;
-		font-size: 12px;
-		line-height: 24px;
-	}
-
-	.status-right {
-		display: flex;
-		gap: 16px;
-	}
-</style>
