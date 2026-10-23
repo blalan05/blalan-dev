@@ -10,6 +10,8 @@ export function Icon(props: { icon: IconDefinition }) {
 	return (
 		<svg
 			aria-hidden="true"
+			width="1em"
+			height="1em"
 			viewBox={`0 0 ${props.icon.icon[0]} ${props.icon.icon[1]}`}
 		>
 			<For each={paths()}>{(d) => <path fill="currentColor" d={d} />}</For>

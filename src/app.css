@@ -19,6 +19,42 @@
 		font-family: Roboto, sans-serif;
 	}
 
+	.code,
+	main,
+	aside {
+		scrollbar-color: color-mix(in srgb, var(--muted) 55%, var(--bg)) transparent;
+		scrollbar-width: thin;
+	}
+
+	.code::-webkit-scrollbar,
+	main::-webkit-scrollbar,
+	aside::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	.code::-webkit-scrollbar-track,
+	main::-webkit-scrollbar-track,
+	aside::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.code::-webkit-scrollbar-thumb,
+	main::-webkit-scrollbar-thumb,
+	aside::-webkit-scrollbar-thumb {
+		border: 2px solid transparent;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--muted) 45%, var(--bg));
+		background-clip: padding-box;
+	}
+
+	.code::-webkit-scrollbar-thumb:hover,
+	main::-webkit-scrollbar-thumb:hover,
+	aside::-webkit-scrollbar-thumb:hover {
+		background: color-mix(in srgb, var(--muted) 75%, var(--bg));
+		background-clip: padding-box;
+	}
+
 	.shell {
 		display: flex;
 		height: 100vh;
@@ -88,7 +124,7 @@
 		text-decoration: underline;
 	}
 
-	nav {
+	aside nav {
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
@@ -96,7 +132,7 @@
 		padding: 8px 28px 32px;
 	}
 
-	nav a {
+	aside nav a {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -112,45 +148,45 @@
 		text-transform: uppercase;
 	}
 
-	nav a svg {
+	aside nav a svg {
 		width: 1.1em;
 		height: 1.1em;
 	}
 
-	nav a.green svg {
+	aside nav a.green svg {
 		color: var(--green);
 	}
 
-	nav a.gold svg {
+	aside nav a.gold svg {
 		color: var(--gold);
 	}
 
-	nav a.blue svg {
+	aside nav a.blue svg {
 		color: var(--blue);
 	}
 
-	nav a.scarlet svg {
+	aside nav a.scarlet svg {
 		color: var(--scarlet);
 	}
 
-	nav a.muted svg {
+	aside nav a.muted svg {
 		color: var(--muted);
 	}
 
-	nav span {
+	aside nav span {
 		text-align: center;
 	}
 
-	nav a.active {
+	aside nav a.active {
 		background: color-mix(in srgb, var(--scarlet-strong) 28%, var(--bg));
 		color: var(--gold);
 	}
 
-	nav a:hover {
+	aside nav a:hover {
 		background: rgba(255, 255, 255, 0.06);
 	}
 
-	nav a.active:hover {
+	aside nav a.active:hover {
 		background: color-mix(in srgb, var(--scarlet-strong) 40%, var(--bg));
 	}
 
@@ -174,19 +210,19 @@
 			height: auto;
 		}
 
-		nav {
+		aside nav {
 			flex-direction: row;
 			justify-content: center;
 		}
 
-		nav a {
+		aside nav a {
 			flex: 1;
 			height: 88px;
 			gap: 6px;
 			font-size: 11px;
 		}
 
-		nav a svg {
+		aside nav a svg {
 			width: 1.1em;
 			height: 1.1em;
 		}
@@ -218,12 +254,12 @@
 			font-size: 16px;
 		}
 
-		nav {
+		aside nav {
 			gap: 8px;
 			padding: 4px 12px 12px;
 		}
 
-		nav a {
+		aside nav a {
 			height: 68px;
 			gap: 4px;
 			font-size: 10px;
@@ -276,14 +312,14 @@
 			font-size: 14px;
 		}
 
-		nav {
+		aside nav {
 			flex: 1;
 			flex-direction: row;
 			gap: 6px;
 			padding: 8px 8px 8px 0;
 		}
 
-		nav a {
+		aside nav a {
 			flex: 1;
 			height: 52px;
 			gap: 2px;
@@ -420,18 +456,24 @@
 
 	.tabbar {
 		display: flex;
+		align-items: stretch;
 		flex: none;
 		height: 36px;
+		overflow: hidden;
 		background: var(--bg-raised);
+		border-bottom: 1px solid var(--line);
 	}
 
 	.tab {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		height: 100%;
 		padding: 0 16px;
+		border-right: 1px solid var(--line);
+		border-bottom: 1px solid var(--bg);
+		margin-bottom: -1px;
 		background: var(--bg);
-		border-right: 1px solid var(--bg-raised);
 		color: #fff;
 		font-family: Roboto, sans-serif;
 		font-size: 13px;
@@ -446,12 +488,16 @@
 
 	.crumbs {
 		display: flex;
+		flex-direction: row;
 		align-items: center;
+		justify-content: flex-start;
 		gap: 6px;
 		flex: none;
 		height: 26px;
 		padding: 0 12px;
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scrollbar-width: none;
 		background: var(--bg);
 		border-bottom: 1px solid var(--line);
 		font-family: Roboto, sans-serif;
@@ -727,6 +773,12 @@
 		font-weight: 500;
 	}
 
+	.head svg {
+		width: 1.25em;
+		height: 1.25em;
+		flex: none;
+	}
+
 	li.gold h3,
 	li.gold .head svg {
 		color: var(--gold);
@@ -777,6 +829,7 @@
 	.cta svg {
 		width: 0.85em;
 		height: 0.85em;
+		flex: none;
 	}
 
 	li.gold .cta {
