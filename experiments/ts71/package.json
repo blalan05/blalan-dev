@@ -1,0 +1,12 @@
+{
+	"name": "ts71-lab",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"check": "tsc --noEmit --runExternalCode --pretty --extendedDiagnostics"
+	},
+	"devDependencies": {
+		"svelte-script-mapper": "file:./mapper",
+		"typescript": "7.1.0-beta"
+	}
+}
