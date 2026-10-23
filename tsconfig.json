@@ -1,9 +1,16 @@
 {
-	"extends": "$app/tsconfig",
 	"compilerOptions": {
-		"sourceMap": true,
-		"strict": true
+		"strict": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "preserve",
+		"jsxImportSource": "@solidjs/web",
+		"types": ["vite/client"],
+		"noEmit": true,
+		"isolatedModules": true,
+		"skipLibCheck": true,
+		"verbatimModuleSyntax": true
 	},
-	"include": ["src", "*"],
-	"exclude": ["src/service-worker"]
+	"include": ["src"]
 }
