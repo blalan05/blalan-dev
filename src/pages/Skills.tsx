@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 const levels = [
 	{
 		name: 'Mastered',
-		items: ['PHP', 'Node.js', 'Vue', 'JavaScript', 'jQuery', 'SQL', 'Postgres', 'MySQL', 'Eloquent', 'HTML', 'CSS']
+		items: ['PHP', 'Node.js', 'Vue', 'Vuetify', 'JavaScript', 'jQuery', 'SQL', 'Postgres', 'MySQL', 'Eloquent', 'HTML', 'CSS']
 	},
 	{
 		name: 'Comfortable',
@@ -13,6 +13,12 @@ const levels = [
 			'Sequelize',
 			'TypeScript',
 			'Svelte',
+			'SvelteKit',
+			'Vite',
+			'Express',
+			'Pinia',
+			'Vue Router',
+			'PWA',
 			'NetSuite',
 			'Git',
 			'REST APIs',
@@ -36,7 +42,26 @@ const levels = [
 	},
 	{
 		name: 'Used',
-		items: ['Elixir', 'Python', 'Solid', 'Drizzle', 'Prisma', 'Bun', 'Electron', 'Docker', 'AWS']
+		items: [
+			'Elixir',
+			'Phoenix',
+			'Python',
+			'Solid',
+			'Drizzle',
+			'Prisma',
+			'Redis',
+			'Fastify',
+			'Tailwind',
+			'Three.js',
+			'Square',
+			'Capacitor',
+			'Jest',
+			'Vitest',
+			'Bun',
+			'Electron',
+			'Docker',
+			'AWS'
+		]
 	}
 ];
 
@@ -61,7 +86,7 @@ export default function Skills() {
 					)}
 				</For>
 			</dl>
-			<p class="note">Business systems: ERP, point of sale, accounting, and printers.</p>
+			<p class="note">Business systems: ERP, point of sale, accounting, payments, and printers.</p>
 		</div>
 	);
 }

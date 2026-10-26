@@ -949,3 +949,23 @@
 		max-width: 42rem;
 	}
 
+	.projects section p {
+		margin: 8px 0 0;
+		color: var(--muted);
+		line-height: 1.5;
+	}
+
+	.projects .kinds {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 12px;
+	}
+
+	.projects .kinds li {
+		margin-top: 0;
+		padding: 4px 10px;
+		border-left: 0;
+		border-radius: 999px;
+	}
+

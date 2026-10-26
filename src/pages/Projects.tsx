@@ -18,6 +18,24 @@ type Entry = {
 	paragraphs: string[];
 };
 
+const kinds = [
+	'Inventory control',
+	'Media player',
+	'Learning management',
+	'Childcare management',
+	'Email marketing',
+	'Ecommerce',
+	'Production tracking',
+	'Kiosk',
+	'Support desk',
+	'Museum exhibit',
+	'Sheet music',
+	'Church and missions',
+	'Show lighting',
+	'Art project planning',
+	'Marketing sites'
+];
+
 const products: Entry[] = [
 	{
 		name: 'FullVue',
@@ -76,6 +94,13 @@ export default function Projects() {
 				<h2>Products</h2>
 				<ul>
 					<For each={products}>{(project) => <Card project={project} />}</For>
+				</ul>
+			</section>
+			<section>
+				<h2>Other work</h2>
+				<p>Kinds of apps I have built. Client names stay off this page until I have permission to use them.</p>
+				<ul class="kinds">
+					<For each={kinds}>{(kind) => <li>{kind}</li>}</For>
 				</ul>
 			</section>
 		</div>
