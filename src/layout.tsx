@@ -4,6 +4,7 @@ import { useLocation } from '@solidjs/router';
 import type { JSX } from '@solidjs/web';
 import { createEffect, createSignal, For, onSettled, Show } from 'solid-js';
 import { Icon } from './icons';
+import { PageView } from './page-view';
 
 const navigation: { name: string; href: string; tone: string; icon: IconDefinition }[] = [
 	{ name: 'About', href: '/', tone: 'scarlet', icon: faUser },
@@ -102,6 +103,7 @@ export function Shell(props: { children: JSX.Element }) {
 
 	return (
 		<div class="shell">
+			<PageView />
 			<aside>
 				<a class="brand" href="/">
 					blalan.DEV
