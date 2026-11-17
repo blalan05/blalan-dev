@@ -4,6 +4,9 @@ export type Kind = 'punct' | 'name' | 'role' | 'text' | 'string' | 'global' | 'k
 	const company = 'Foundational Technologies LLC';
 	const links: Record<string, string> = {
 		[company]: 'https://foundtechsolutions.com',
+		'8 Bit Bootcamp': 'https://8bitdiv.net',
+		CoLaborer: 'https://colaborers.app',
+		'SYNC Ministries': 'https://app.syncministries.org',
 		FullVue: 'https://fullvue.io',
 		ShowVue: 'https://showvue.io',
 		Vuetify: 'https://vuetifyjs.com'
@@ -104,6 +107,9 @@ export type Kind = 'punct' | 'name' | 'role' | 'text' | 'string' | 'global' | 'k
 		[],
 		tag('practice'),
 		tokenize('  Foundational Technologies LLC is a veteran-owned studio in Appleton, Wisconsin.'),
+		child('product', '8 Bit Bootcamp is an 8-bit RPG of Marine recruit training and the campaigns that follow.'),
+		child('product', 'CoLaborer keeps missionaries, boards, and supporting churches on one record.'),
+		child('product', 'SYNC Ministries is the study, group, and media app for SYNC.'),
 		child('product', 'FullVue, an ERP toolbox for operations and production.'),
 		child(
 			'product',

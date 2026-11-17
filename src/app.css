@@ -814,11 +814,23 @@
 		height: 84px;
 	}
 
+	.logo.mark {
+		height: 72px;
+		max-width: 72px;
+	}
+
+	.logo.pixel {
+		height: 64px;
+		max-width: 64px;
+		image-rendering: pixelated;
+	}
+
 	.cta {
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
 		flex: none;
+		margin-left: auto;
 		padding: 8px 14px;
 		border-radius: 8px;
 		font-size: 14px;
